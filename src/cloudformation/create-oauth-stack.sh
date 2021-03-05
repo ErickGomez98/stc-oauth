@@ -18,7 +18,7 @@ create_cloudformation_stack () {
   --policy-document "${ROLE_POLICY_FILE}"
 
   echo "waiting 10s so that cloudformation recognizes the newly created role"
-  sleep 10
+  sleep 15
 
   echo "Creating the cloudformation oAuth API stack and change set"
   stackId=$(aws --profile="${AWS_CLI_PROFILE}" cloudformation create-change-set \

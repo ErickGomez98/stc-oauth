@@ -199,8 +199,8 @@ Resources:
                 Capabilities: CAPABILITY_IAM
                 RoleArn: !GetAtt CodePipeLineRole.Arn
                 TemplatePath: BuildArtifact::packaged-template.yml
-                StackName: !Sub stc-oauth-pipeline-${EnvironmentType}
-                ChangeSetName: !Sub stc-oauth-pipeline-${EnvironmentType}-changeset
+                StackName: !Sub stc-oauth-api-${EnvironmentType}
+                ChangeSetName: !Sub stc-oauth-api-${EnvironmentType}-changeset
                 OutputFileName: api-stack-outputs.json
                 ParameterOverrides: !Sub |
                   {
@@ -222,6 +222,6 @@ Resources:
                 ActionMode: CHANGE_SET_EXECUTE
                 Capabilities: CAPABILITY_IAM
                 RoleArn: !GetAtt CodePipeLineRole.Arn
-                StackName: !Sub stc-oauth-pipeline-${EnvironmentType}
-                ChangeSetName: !Sub stc-oauth-pipeline-${EnvironmentType}-changeset
+                StackName: !Sub stc-oauth-api-${EnvironmentType}
+                ChangeSetName: !Sub stc-oauth-api-${EnvironmentType}-changeset
               RunOrder: 2
