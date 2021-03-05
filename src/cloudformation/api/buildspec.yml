@@ -9,8 +9,8 @@ phases:
       # - ./bash_npm_install.sh
       - ls -la
       - env
-      - aws cloudformation package --template-file template.yml --s3-bucket $STCAuthBucket --output-template-file packaged-template.yml
-      - aws s3 cp ../../spec/openapi.yml "s3://$STCAuthBucket"
+      - aws cloudformation package --template-file src/cloudformation/api/template.yml --s3-bucket $STCAuthBucket --output-template-file packaged-template.yml
+      - aws s3 cp src/spec/openapi.yml "s3://$STCAuthBucket"
 artifacts:
   files:
     - packaged-template.yml
