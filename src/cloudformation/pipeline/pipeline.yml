@@ -30,6 +30,9 @@ Parameters:
   S3STCAuthBucket:
     Description: S3 Bucket to store the oAuth artifacts generated during the pipeline
     Type: String
+  CFAPIoAuthRole:
+    Description: Cloudformation oAuth API role with permissions to create the required resources
+    Type: String
 
 Resources:
   CodeBuildRole:
@@ -197,7 +200,7 @@ Resources:
               Configuration:
                 ActionMode: CHANGE_SET_REPLACE
                 Capabilities: CAPABILITY_IAM
-                # RoleArn: !GetAtt CodePipeLineRole.Arn
+                RoleArn: !Ref CFAPIoAuthRole
                 TemplatePath: BuildArtifact::packaged-template.yml
                 StackName: !Sub stc-oauth-api-${EnvironmentType}
                 ChangeSetName: !Sub stc-oauth-api-${EnvironmentType}-changeset
@@ -221,7 +224,7 @@ Resources:
               Configuration:
                 ActionMode: CHANGE_SET_EXECUTE
                 Capabilities: CAPABILITY_IAM
-                # RoleArn: !GetAtt CodePipeLineRole.Arn
+                RoleArn: !Ref CFAPIoAuthRole
                 StackName: !Sub stc-oauth-api-${EnvironmentType}
                 ChangeSetName: !Sub stc-oauth-api-${EnvironmentType}-changeset
               RunOrder: 2
